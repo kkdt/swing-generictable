@@ -1,0 +1,46 @@
+/**
+ * Copyright (C) 2018 thinh ho
+ * This file is part of 'swing-generictable' which is released under the MIT license.
+ * See LICENSE at the project root directory.
+ */
+
+description = 'swing-generictable'
+version = 0.1
+
+buildscript {
+    repositories { 
+        mavenCentral() 
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+ext {
+    localrepo = project.hasProperty('localrepo') ? localrepo : buildDir.path + "/artifacts"
+}
+
+jar {
+    manifest {
+        attributes(
+            "Name": project.name,
+            "Specification-Title": "swing-generictable",
+            "Specification-Version": version,
+            "Specification-Vendor": "kkdt.one",
+            "Implementation-Title": "swing-generictable",
+            "Implementation-Version": version,
+            "Implementation-Vendor": "me@kkdt.one"
+        )
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.10'
+}
