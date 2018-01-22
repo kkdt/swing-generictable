@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Tuple3 column meta data.
+ * Column meta data.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

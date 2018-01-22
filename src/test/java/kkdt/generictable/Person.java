@@ -7,7 +7,7 @@ package kkdt.generictable;
 
 import kkdt.generictable.OrderedColumn;
 
-public class Person {
+class Person {
     @OrderedColumn(index=0, name="First Name", type = String.class)
     String firstName;
     

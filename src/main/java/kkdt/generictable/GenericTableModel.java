@@ -22,7 +22,7 @@ import javax.swing.table.AbstractTableModel;
  * <pre>
  * class AnimalTableModel extends GenericTableModel&lt;Animal&gt; {...}
  * or 
- * ExtTableModel&lt;Animal&gt; animalModel = new GenericTableModel&lt;Animal&gt;() {...}
+ * GenericTableModel&lt;Animal&gt; animalModel = new GenericTableModel&lt;Animal&gt;() {...}
  * </pre>
  * </p>
  * 
