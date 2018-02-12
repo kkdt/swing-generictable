@@ -5,6 +5,7 @@
  */
 
 description = 'swing-generictable'
+group = 'kkdt.generictable'
 version = 0.1
 
 buildscript {
@@ -22,6 +23,7 @@ repositories {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 ext {
     localrepo = project.hasProperty('localrepo') ? localrepo : buildDir.path + "/artifacts"
@@ -43,4 +45,28 @@ jar {
 
 dependencies {
     testCompile 'junit:junit:4.10'
+}
+
+test {
+    systemProperty 'java.awt.headless', true
+}
+
+publishing {
+    publications {
+        myPublication(MavenPublication) {
+            // publish jar archive
+            from components.java
+            // include publish README.md
+            artifact ('README.md') {
+                classifier = 'README'
+                extension  = 'md'
+            }
+        }
+    }
+    // publish artifacts to local directory
+    repositories {
+       maven {
+          url file(localrepo)
+       }
+    }
 }

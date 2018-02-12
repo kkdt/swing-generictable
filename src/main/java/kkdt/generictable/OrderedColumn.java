@@ -24,7 +24,7 @@ public @interface OrderedColumn {
     int index();
     
     /**
-     * Column name.
+     * Column name/identifier.
      * 
      * @return
      */
@@ -37,4 +37,32 @@ public @interface OrderedColumn {
      */
     @SuppressWarnings("rawtypes")
     Class type();
+    
+    /**
+     * Column tool tip text (default empty string).
+     * 
+     * @return
+     */
+    String toolTip() default "";
+    
+    /**
+     * Column initial width (default 50).
+     * 
+     * @return
+     */
+    int width() default 50;
+    
+    /**
+     * Column display value (default empty string).
+     * 
+     * @return
+     */
+    String displayName() default "";
+    
+    /**
+     * Editable column value.
+     * 
+     * @return
+     */
+    boolean editable() default false;
 }
