@@ -3,30 +3,31 @@
  * This file is part of 'swing-generictable' which is released under the MIT license.
  * See LICENSE at the project root directory.
  */
-
-description = 'swing-generictable'
-group = 'kkdt.generictable'
-version = 0.1
-
 buildscript {
-    repositories { 
-        mavenCentral() 
+    repositories {
+        mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
     }
 }
 
+plugins {
+    // Apply the java-library plugin for API and implementation separation.
+    id 'java-library'
+    id 'maven-publish'
+}
+
+description = 'swing-generictable'
+group = 'kkdt.generictable'
+version = 1.0
+
 repositories {
     mavenCentral()
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-
 ext {
-    localrepo = project.hasProperty('localrepo') ? localrepo : buildDir.path + "/artifacts"
+    localrepo = project.hasProperty('localrepo') ? localrepo : layout.buildDirectory.dir("artifacts")
 }
 
 jar {
@@ -35,16 +36,16 @@ jar {
             "Name": project.name,
             "Specification-Title": "swing-generictable",
             "Specification-Version": version,
-            "Specification-Vendor": "kkdt.one",
+            "Specification-Vendor": "kkdt",
             "Implementation-Title": "swing-generictable",
             "Implementation-Version": version,
-            "Implementation-Vendor": "me@kkdt.one"
+            "Implementation-Vendor": "kkdt.github.io"
         )
     }
 }
 
 dependencies {
-    testCompile 'junit:junit:4.10'
+    testImplementation libs.junit
 }
 
 test {
@@ -68,5 +69,12 @@ publishing {
        maven {
           url file(localrepo)
        }
+    }
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }

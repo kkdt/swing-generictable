@@ -5,3 +5,9 @@
 Goals
 1. Annotate columns right at the UI data model definition.
 2. Table model exposes the underlying UI data model rather than an array of array of objects.
+
+# Quick Start
+
+```
+./gradlew clean build publishToMavenLocal
+```
